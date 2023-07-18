@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Install httpie with apt
-        run: apt install httpie
+        run: sudo apt install httpie -y
       - name: Get the content
         run: http https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }}
   curl:
