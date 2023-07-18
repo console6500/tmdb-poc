@@ -26,4 +26,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Get the content
-        run: curl https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }}
+        run: curl -s https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }} | jq .
