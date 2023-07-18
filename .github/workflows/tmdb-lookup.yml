@@ -1,0 +1,15 @@
+name: TMDB Lookup
+
+on:
+  workflow_dispatch:
+    inputs:
+      IMDB_ID:
+        description: 'The IMDB ID for the content to lookup'
+        required: true
+        default: "550"
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run a one-line script
+        run: http https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }}
