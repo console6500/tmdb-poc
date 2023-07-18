@@ -14,14 +14,14 @@ jobs:
       - name: Install httpie with pip
         run: python -m pip install httpie
       - name: Get the content
-        run: http https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }}
+        run: http https://api.themoviedb.org/3/movie/550?api_key=4e9cfe154c098b20aa19aa4768fe6a92
   apt:
     runs-on: ubuntu-latest
     steps:
       - name: Install httpie with apt
         run: sudo apt install httpie -y
       - name: Get the content
-        run: http https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }}
+        run: http https://api.themoviedb.org/3/movie/550?api_key=4e9cfe154c098b20aa19aa4768fe6a92
   curl:
     runs-on: ubuntu-latest
     steps:
