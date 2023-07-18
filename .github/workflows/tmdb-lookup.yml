@@ -8,8 +8,22 @@ on:
         required: true
         default: "550"
 jobs:
-  build:
+  pip:
     runs-on: ubuntu-latest
     steps:
-      - name: Run a one-line script
+      - name: Install httpie with pip
+        run: python -m pip install httpie
+      - name: Get the content
+        run: http https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }}
+  apt:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install httpie with apt
+        run: apt install httpie
+      - name: Get the content
+        run: http https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }}
+  curl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the content
         run: curl https://api.themoviedb.org/3/movie/${{ github.event.inputs.IMDB_ID }}?api_key=${{ secrets.TMDB_API_KEY }}
